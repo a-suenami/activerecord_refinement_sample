@@ -7,5 +7,22 @@ class UserRegisterService
   end
 end
 
-user = UserRegisterService.call(email: 'test@example.com', first_name: 'Akira', last_name: 'Suenami', birth_date: Time.local(1985, 5, 13))
-puts user.inspect
+UserRegisterService.call(email: 'test@example.com', first_name: 'Akira', last_name: 'Suenami', birth_date: Time.local(1985, 5, 13))
+
+registered_user = User.last
+puts registered_user.id.class
+puts registered_user.first_name.class
+puts registered_user.last_name.class
+puts registered_user.email.class
+puts registered_user.birth_date.class
+puts registered_user.birthday_massage_sending_scheduled_at
+
+require 'app/models/user/refinement'
+using Refinement
+
+puts registered_user.id.class
+puts registered_user.first_name.class
+puts registered_user.last_name.class
+puts registered_user.email.class
+puts registered_user.birth_date.class
+puts registered_user.birthday_massage_sending_scheduled_at
